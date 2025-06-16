@@ -1,0 +1,10 @@
+#!/bin/bash
+
+chmod +x /usr/local/bin/configmap-generator.sh
+mkdir -p /var/log/configmap-generator
+systemctl daemon-reexec
+systemctl daemon-reload
+systemctl enable configmap-generator.service
+systemctl start configmap-generator.service
+
+exit 0

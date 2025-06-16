@@ -1,0 +1,19 @@
+[Unit]
+Description=Auto YAML generator from XML
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/configmap-generator.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
+
+
+

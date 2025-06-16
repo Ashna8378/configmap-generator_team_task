@@ -1,0 +1,9 @@
+Package: configmap-generator
+Version: 1.0.0
+Section: base
+Priority: optional
+Architecture: all
+Maintainer: Ashna Dubey <ashna22@navgurukul.org>
+Description: A tool to generate ConfigMaps from XML and .cfg using bash.
+ A background service that monitors XML input files and generates YAML.
+ Logs only when new files are processed. Useful for automation and DevOps.
