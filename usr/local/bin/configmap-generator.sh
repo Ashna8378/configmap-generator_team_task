@@ -73,7 +73,9 @@ done
 # Continuous Watch Loop Starts Here
 # ================================
 while true; do
-  find "$XML_DIR" -maxdepth 1 -type f -name "*.xml" | while read -r XML_FILE; do
+  # find "$XML_DIR" -maxdepth 1 -type f -name "*.xml" | while read -r XML_FILE; do
+    find "$XML_DIR" -type f -name "*.xml" | while read -r XML_FILE; do
+
     FILENAME=$(basename "$XML_FILE")
     OUT_FILE="$OUTPUT_DIR/configMap-${FILENAME%.xml}.yaml"
 
@@ -144,8 +146,10 @@ while true; do
       }
     ' "$TEMPLATE_FILE" > "$OUT_FILE"
 
-    mv "$XML_FILE" "$PROCESSED_DIR/"
-    log_event "New YAML generated: $OUT_FILE from $FILENAME"
+    TOP_DIR=$(echo "$XML_FILE" | sed "s|$XML_DIR/||" | cut -d'/' -f1)
+    mv "$XML_DIR/$TOP_DIR" "$PROCESSED_DIR/"
+    log_event "Moved folder '$TOP_DIR' to processed-xml and generated: $OUT_FILE from $FILENAME"
+
   done
 
   sleep 5
