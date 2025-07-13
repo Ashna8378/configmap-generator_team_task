@@ -72,6 +72,7 @@ done
 # ================================
 # Continuous Watch Loop Starts Here
 # ================================
+
 while true; do
   # find "$XML_DIR" -maxdepth 1 -type f -name "*.xml" | while read -r XML_FILE; do
     find "$XML_DIR" -type f -name "*.xml" | while read -r XML_FILE; do
